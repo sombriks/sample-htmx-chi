@@ -7,18 +7,18 @@
     </tr>
     {% for todo in todos %}
         <tr>
-            <td>{{todo.id}} <input class="edit{{todo.id}}" type="hidden" value="{{todo.id}}"/></td>
-            <td><input class="edit{{todo.id}}" type="text" name="description" value="{{todo.description}}"/></td>
+            <td>{{todo.Id}} <input class="edit{{todo.Id}}" type="hidden" value="{{todo.Id}}"/></td>
+            <td><input class="edit{{todo.Id}}" type="text" name="description" value="{{todo.Description}}"/></td>
             <td>
                 <!-- TODO try to use checkboxes again -->
-                <select class="edit{{todo.id}}" name="done">
-                    <option {%- if todo.done -%} selected {%- endif -%}>true</option>
-                    <option {%- unless todo.done -%} selected {%- endunless -%}>false</option>
+                <select class="edit{{todo.Id}}" name="done">
+                    <option {%- if todo.Done -%} selected {%- endif -%}>true</option>
+                    <option {%- unless todo.Done -%} selected {%- endunless -%}>false</option>
                 </select>
             </td>
             <td>
-                <button hx-put="/todos/{{todo.id}}" hx-swap="outerHTML"
-                        hx-target="#table" hx-include=".edit{{todo.id}}">Save
+                <button hx-put="/todos/{{todo.Id}}" hx-swap="outerHTML"
+                        hx-target="#table" hx-include=".edit{{todo.Id}}">Save
                 </button>
             </td>
         </tr>
