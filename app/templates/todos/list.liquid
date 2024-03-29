@@ -1,0 +1,26 @@
+<table id="table">
+    <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Done?</th>
+        <th></th>
+    </tr>
+    {% for todo in todos %}
+        <tr>
+            <td>{{todo.id}} <input class="edit{{todo.id}}" type="hidden" value="{{todo.id}}"/></td>
+            <td><input class="edit{{todo.id}}" type="text" name="description" value="{{todo.description}}"/></td>
+            <td>
+                <!-- TODO try to use checkboxes again -->
+                <select class="edit{{todo.id}}" name="done">
+                    <option {%- if todo.done -%} selected {%- endif -%}>true</option>
+                    <option {%- unless todo.done -%} selected {%- endunless -%}>false</option>
+                </select>
+            </td>
+            <td>
+                <button hx-put="/todos/{{todo.id}}" hx-swap="outerHTML"
+                        hx-target="#table" hx-include=".edit{{todo.id}}">Save
+                </button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample Koa with HTMX</title>
+    <script src="/htmx.js"></script>
+    <script>
+      htmx.logAll();
+    </script>
+</head>
+<body>
+<h1>TODO List</h1>
+{% include "./app/templates/todos/form.liquid" %}
+{% include "./app/templates/todos/list.liquid" %}
+</body>
+</html>
