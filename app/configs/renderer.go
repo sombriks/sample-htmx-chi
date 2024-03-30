@@ -34,14 +34,7 @@ func NewConfig() *Config {
 	}
 
 	config.Open()
-	config.Db.Exec(`
-		create table if not exists todos(
-			id integer primary key,
-			description text not null,
-			done boolean default false,
-			created timestamp default current_timestamp
-		);
-	`)
+	config.InitSchema()
 
 	return &config
 }

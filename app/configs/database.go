@@ -22,3 +22,14 @@ func (config *Config) Open() {
 		log.Fatal(err)
 	}
 }
+
+func (config *Config) InitSchema() {
+	config.Db.Exec(`
+		create table if not exists todos(
+			id integer primary key,
+			description text not null,
+			done boolean default false,
+			created timestamp default current_timestamp
+		);
+	`)
+}
